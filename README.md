@@ -3,7 +3,7 @@
 (1) Set up:
 I/O(3.3V for the Vcc):
 AnalogIn : 
-"A0" for the voltage input after the RC filiter  
+"A0" for the voltage input after the RC filiter 
 "A3" for the button input "UP"
 "A4" for the button input "DOWN"
 "A5" for the button input "CONFIRM"
