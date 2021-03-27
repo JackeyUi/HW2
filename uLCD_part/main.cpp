@@ -17,10 +17,10 @@ int ULCD() {
     uLCD.text_width(2); //4X size text
     uLCD.text_height(2);
     uLCD.locate(1,2);
-    uLCD.printf(" 50 Hz \n"); //Default Green on black text
+    uLCD.printf("240 Hz \n"); //Default Green on black text
    //uLCD.printf("\n  Starting Demo...");
     uLCD.locate(1,4);
-    uLCD.printf("600 Hz \n");
+    uLCD.printf("720 Hz \n");
     while(true) {
         while(!S) {
             uLCD.locate(7,4);
@@ -62,8 +62,8 @@ int ULCD() {
 int main()
 {
     int x = ULCD();
-    if(x == 1) printf("1\n");
-    else printf("0\n");
+  //  if(x == 1) printf("1\n");
+  //  else printf("0\n");
     if(x == 1) {
         float ADCdata[300];
         int g = 0;
@@ -88,38 +88,37 @@ int main()
                     ThisThread::sleep_for(100ms);
                 }
                 g = 0;
+                return 0;
             }
         }
 
-    } 
-    else if (x == 0) {
-        float ADCdata[100];
+    } else if (x == 0) {
+        float ADCdata[300];
         int g = 0;
         while (1) {
-            for (float i = 0.0f; i < 20.0f; i += 1.0f) {
+            for (float i = 0.0f; i < 300.0f; i += 1.0f) {
                 double sam = 0;
-                if(i < 18) {
-                   sam =  i / 20;
+                if(i < 270) {
+                   sam =  i / 300;
                 }
                 else {
-                   sam = (20 - i) / 2 * 9 / 10;
+                   sam = (300 - i) / 30 * 9 / 10;
                 }
                 aout = sam;
-                ADCdata[g++] = ain; 
-                ThisThread::sleep_for(1ms);
-            };
-            if (g == 100) {
-                for (int i = 0; i < 100; i++) {
+                if (g%3 == 0)
+                ADCdata[g/3] = ain;
+                g++;
+             
+            }
+            if (g == 900) {
+                for (int i = 0; i < 300; i++) {
                     printf("%f\r\n", ADCdata[i] * 3.3);
-                    ThisThread::sleep_for(10ms);
+                    ThisThread::sleep_for(100ms);
                 }
                 g = 0;
+                return 0;
             }
-            //ADCdata = ain;
-
         }
-        return 0;
     }
-
     
 }
