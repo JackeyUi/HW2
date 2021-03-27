@@ -1,6 +1,8 @@
 # HW2
 # The files used are in the "main_" dir.
 (1) Set up:
+R: 4.7kΩ
+C: 47nF
 I/O(3.3V for the Vcc):
 AnalogIn : 
 "A0" for the voltage input after the RC filiter 
@@ -25,3 +27,5 @@ About 30~60 seconds later, you can get a graphic made by the "FFT.py"
 The result of "240 Hz" would be looked like the "HW2_Sample_240Hz.JPG"
 The result of "720 Hz" would be looked like the "HW2_Sample_720Hz.JPG"
 We can compare with the result measured by the picoscope ("HW2_DAC.JPG")
+
+Note that the "720 Hz" is at cut-off frequency of the designed RC circult, so that the amplitude after the ADC becomes lower (about 70% of the origin).
